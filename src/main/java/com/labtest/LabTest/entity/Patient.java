@@ -1,7 +1,5 @@
 package com.labtest.LabTest.entity;
-
-import java.util.Date;
-
+import java.sql.Date;
 public class Patient {
 	private int  patientId;
 	private String firstname;

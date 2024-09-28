@@ -1,7 +1,8 @@
 package com.labtest.LabTest.entity;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
+
 
 public class Appointment {
 	private int appointmentId;
