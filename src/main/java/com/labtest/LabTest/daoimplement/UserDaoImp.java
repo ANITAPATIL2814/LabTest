@@ -37,7 +37,7 @@ public class UserDaoImp implements UserDao{
 		String query="Select*from User where username=? && password= ? ";
 		PreparedStatement statement= connection.prepareStatement(query);//to call sql statment
 		statement.setString(1, username);
-		statement.setString(1, password);
+		statement.setString(2, password);
 		ResultSet rs= statement.executeQuery();
 		User user=null;
 		if(rs.next()) {

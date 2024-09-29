@@ -12,7 +12,7 @@ public class PatientDaoImpl implements PatientDao{
 	@Override
 	public Patient getPatientById(int patientId) throws SQLException {
 		Connection connection=DatabaseConnection.getConnection();
-		String query="select*from Patient where patientId=?";
+		String query="select*from Patient WHERE patientId=?";
 		PreparedStatement statement=connection.prepareStatement(query);
 		statement.setInt(1, patientId);
 		ResultSet rs=statement.executeQuery();
@@ -65,11 +65,13 @@ public class PatientDaoImpl implements PatientDao{
 		PreparedStatement statement= null;
 		try {
 			connection=DatabaseConnection.getConnection();
-			String query="update Patient set datofbirth=?,contactNumber=?,address =?,where patientId=?";
+			String query="update Patient set dateofbirth=?,contactNumber=?,address =? WHERE patientId=?";
 			statement=connection.prepareStatement(query);
-			statement.setDate(3, patient.getDateofbirth());
-			statement.setString(4, patient.getContactNumber());
-			statement.setString(5, patient.getAddress());
+			
+			statement.setDate(1, patient.getDateofbirth());
+			statement.setString(2, patient.getContactNumber());
+			statement.setString(3, patient.getAddress());
+			statement.setInt(4, patient.getPatientId());
 			
 			int rowsUpdated=statement.executeUpdate();
 			if(rowsUpdated>0) {
